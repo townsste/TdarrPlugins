@@ -26,18 +26,16 @@ const details = () => {
   
 // eslint-disable-next-line no-unused-vars
 const plugin = (file, librarySettings, inputs, otherArguments) => {
-    const lib = require('../methods/lib')();
-  // eslint-disable-next-line no-unused-vars,no-param-reassign
-  inputs = lib.loadDefaultValues(inputs, details);
+const lib = require('../methods/lib')();
+// eslint-disable-next-line no-unused-vars,no-param-reassign
+inputs = lib.loadDefaultValues(inputs, details);
   
   try {
 	var fs = require("fs");
-    var fileNameOld = file._id;
+        var fileNameOld = file._id;
   
   if (inputs.appendToEnd) {
-
 	var extension = fileNameOld.split('.').pop();
-	
 	file._id = file._id.replace(`.${extension}`, `${inputs.appendToEnd}.${extension}`);
 	file.file = file.file.replace(`.${extension}`, `${inputs.appendToEnd}.${extension}`);
 	
