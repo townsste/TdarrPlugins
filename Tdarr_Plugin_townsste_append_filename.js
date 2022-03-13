@@ -34,7 +34,7 @@ inputs = lib.loadDefaultValues(inputs, details);
 	var fs = require("fs");
         var fileNameOld = file._id;
   
-  if (inputs.appendToEnd) {
+  if (inputs.appendToEnd && !file._id.includes(`${inputs.appendToEnd}.`)) {
 	var extension = fileNameOld.split('.').pop();
 	file._id = file._id.replace(`.${extension}`, `${inputs.appendToEnd}.${extension}`);
 	file.file = file.file.replace(`.${extension}`, `${inputs.appendToEnd}.${extension}`);
